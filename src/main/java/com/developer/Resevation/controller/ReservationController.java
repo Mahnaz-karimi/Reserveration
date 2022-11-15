@@ -25,17 +25,17 @@ public class ReservationController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Reservation> findReservationById(@PathVariable("id") Long id) {
+    public Optional<Reservation> findById(@PathVariable("id") Long id) {
         return reservationService.findById(id);
     }
 
     @PostMapping
     public Reservation saveReservation(@RequestBody Reservation reservation) {
 
-        if (totalBookingService.findTotalBookingAmountReservationByPerformanceId(reservation.getPerformanceId()) >= 50
+       /* if (totalBookingService.findTotalBookingAmountReservationByPerformanceId(reservation.getPerformanceId()) >= 50
         || totalBookingService.findTotalBookingAmountReservationByPerformanceId(reservation.getPerformanceId())
                 + reservation.getReservationAmount()> 50 ){
-         }
+         }*/
         return reservationService.saveReservation(reservation);
     }
 

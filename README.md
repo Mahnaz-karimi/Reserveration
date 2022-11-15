@@ -1,3 +1,3 @@
 # Reserveration
 
-A project springboot, postgres, docker
+A project with Springboot, Java SE 19, Postgres, docker
