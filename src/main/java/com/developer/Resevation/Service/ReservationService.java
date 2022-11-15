@@ -12,7 +12,4 @@ public interface ReservationService {
     Reservation updateReservation(Reservation reservationEntity);
     void deleteReservation(Long id);
 
-  /*  //    Using Request for Save and Update Employee
-    EmployeeResponse saveEmployee(EmployeeRequest employeeRequest);
-    EmployeeResponse updateEmployee(EmployeeRequest employeeRequest, Long id);*/
 }

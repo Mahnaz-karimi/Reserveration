@@ -1,6 +1,7 @@
 package com.developer.Resevation.controller;
 
 import com.developer.Resevation.Service.ReservationService;
+import com.developer.Resevation.Service.TotalBookingService;
 import com.developer.Resevation.entity.Reservation;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,11 +10,12 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/reservation")
-public class RerservationController {
+public class ReservationController {
 
     private final ReservationService reservationService;
+    private TotalBookingService totalBookingService;
 
-    public RerservationController(ReservationService reservationService) {
+    public ReservationController(ReservationService reservationService) {
         this.reservationService = reservationService;
     }
 
@@ -29,6 +31,11 @@ public class RerservationController {
 
     @PostMapping
     public Reservation saveReservation(@RequestBody Reservation reservation) {
+
+        if (totalBookingService.findTotalBookingAmountReservationByPerformanceId(reservation.getPerformanceId()) >= 50
+        || totalBookingService.findTotalBookingAmountReservationByPerformanceId(reservation.getPerformanceId())
+                + reservation.getReservationAmount()> 50 ){
+         }
         return reservationService.saveReservation(reservation);
     }
 
@@ -42,15 +49,4 @@ public class RerservationController {
         reservationService.deleteReservation(id);
     }
 
-//    Using Request and Response with save and update employee
-
-   /* @PostMapping("/res")
-    public Reservation saveReservation(@RequestBody ReservationRequest reservationRequest) {
-        return reservationService.saveReservation(reservationRequest);
-    }
-
-    @PutMapping("/res/{id}")
-    public Reservation updateRevResponse(@RequestBody ReservationRequest reservationRequest, @PathVariable("id") Long id) {
-        return reservationService.updateReservation(reservationRequest, id);
-    }*/
 }
