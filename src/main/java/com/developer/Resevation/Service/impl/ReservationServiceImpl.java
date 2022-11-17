@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service 
 public class ReservationServiceImpl implements ReservationService {
 
     private final ReservationRepository reservationRepository;
@@ -26,6 +26,7 @@ public class ReservationServiceImpl implements ReservationService {
     public Optional<Reservation> findById(Long id) {
         return reservationRepository.findById(id);
     }
+
 
     @Override
     public Reservation saveReservation(Reservation reservationEntity) {

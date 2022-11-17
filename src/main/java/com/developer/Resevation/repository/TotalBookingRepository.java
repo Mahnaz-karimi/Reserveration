@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TotalBookingRepository extends JpaRepository<TotalBooking, Long> {
+    TotalBooking findTotalBookingByPerformanceId(long perfomanceId);
 }
+

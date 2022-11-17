@@ -1,7 +1,9 @@
 package com.developer.Resevation.controller;
 
 import com.developer.Resevation.Service.ReservationService;
+import com.developer.Resevation.Service.TotalBookingService;
 import com.developer.Resevation.entity.Reservation;
+import com.developer.Resevation.repository.ReservationRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
@@ -12,7 +14,10 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -24,35 +29,45 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertNotNull;
+
 @RunWith(SpringRunner.class)
 @WebMvcTest(value=ReservationController.class)
 class ReservationControllerTest {
+    Reservation mockReservation1 = new Reservation();
+    Reservation mockReservation2 = new Reservation();
     @Autowired
     private MockMvc mockMvc;
     @MockBean
     private ReservationService reservationService;
+    @MockBean
+    private TotalBookingService totalBookingService;
+    @MockBean
+    private ReservationRepository reservationRepository;
+    @BeforeEach
+    void setUp() {
 
-    @Test
-    void findAllReservation() throws Exception {
-        Reservation mockReservation1 = new Reservation();
         mockReservation1.setReservationAmount(5);
         mockReservation1.setCostumerId(1);
         mockReservation1.setPerformanceId(10);
+        mockReservation1.setId(1);
 
-        Reservation mockReservation2 = new Reservation();
         mockReservation2.setReservationAmount(10);
         mockReservation2.setCostumerId(11);
         mockReservation2.setPerformanceId(1);
+        mockReservation1.setId(2);
+    }
+
+    @Test
+    void findAllReservation() throws Exception {
 
         List<Reservation> reservationList = new ArrayList<>();
         reservationList.add(mockReservation1);
         reservationList.add(mockReservation2);
 
-
         Mockito.when(reservationService.findAllReservation()).thenReturn(reservationList);
 
-        String URI = "/reservation";
+        String URI = "/api/reservation";
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
                 URI).accept(
                 MediaType.APPLICATION_JSON);
@@ -64,29 +79,31 @@ class ReservationControllerTest {
         assertThat(outputInJson).isEqualTo(expectedJson);
     }
 
+/*
     @Test
     void findById() throws Exception {
-       /* Reservation mockReservation1 = new Reservation();
-        mockReservation1.setReservationAmount(5);
-        mockReservation1.setCostumerId(1);
-        mockReservation1.setPerformanceId(10);
-
         Mockito.when(reservationService.findById((long) Mockito.anyInt())).thenReturn(Optional.of(mockReservation1));
 
-        String URI = "/reservation/1";
+        String expectedJson = this.mapToJson(Optional.of(mockReservation1));
+
+        String URI = "/api/reservation/1";
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
                 URI).accept(
                 MediaType.APPLICATION_JSON);
 
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-        String expectedJson = this.mapToJson(mockReservation1);
         String outputInJson = result.getResponse().getContentAsString();
-        assertThat(outputInJson).isEqualTo(expectedJson);*/
+        assertThat(outputInJson).isEqualTo(expectedJson);
     }
 
     @Test
     void saveReservation() {
+
+        ResponseEntity<Reservation> postResponse = restTemplate.postForEntity(getRootUrl()+ "/api/reservation", mockReservation1, Reservation.class);
+        assertNotNull(postResponse);
+        assertNotNull(postResponse.getBody());
     }
+*/
 
     @Test
     void updateReservation() {

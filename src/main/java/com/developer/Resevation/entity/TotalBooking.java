@@ -12,14 +12,14 @@ public class TotalBooking {
     @Column(name = "performance_id")
     private long performanceId;
     @Column(name = "total_resevation")
-    private long costumerId;
+    private int totalBooking;
 
     public TotalBooking() {
     }
 
-    public TotalBooking(long performanceId, long costumerId) {
+    public TotalBooking(long performanceId, int totalBooking) {
         this.performanceId = performanceId;
-        this.costumerId = costumerId;
+        this.totalBooking = totalBooking;
     }
 
     public long getId() {
@@ -38,11 +38,11 @@ public class TotalBooking {
         this.performanceId = performanceId;
     }
 
-    public long getCostumerId() {
-        return costumerId;
+    public int getTotalBooking() {
+        return totalBooking;
     }
 
-    public void setCostumerId(long costumerId) {
-        this.costumerId = costumerId;
+    public void setTotalBooking(int totalBooking) {
+        this.totalBooking = totalBooking;
     }
 }

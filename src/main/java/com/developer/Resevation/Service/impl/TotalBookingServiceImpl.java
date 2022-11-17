@@ -1,16 +1,16 @@
 package com.developer.Resevation.Service.impl;
 
 import com.developer.Resevation.Service.TotalBookingService;
-import com.developer.Resevation.entity.Reservation;
 import com.developer.Resevation.entity.TotalBooking;
 import com.developer.Resevation.repository.TotalBookingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class TotalBookingServiceImpl implements TotalBookingService {
-
-    private final TotalBookingRepository totalBookingRepository;
+    private TotalBookingRepository totalBookingRepository;
 
     public TotalBookingServiceImpl(TotalBookingRepository totalBookingRepository) {
         this.totalBookingRepository = totalBookingRepository;
@@ -22,8 +22,8 @@ public class TotalBookingServiceImpl implements TotalBookingService {
     }
 
     @Override
-    public int findTotalBookingAmountReservationByPerformanceId(long id) {
-        return  0; // methd for at finde en totalbooking via performance id
+    public int findTotalBookingByPerformanceId(long id) {
+        return  totalBookingRepository.findTotalBookingByPerformanceId(id).getTotalBooking();
     }
 
     @Override

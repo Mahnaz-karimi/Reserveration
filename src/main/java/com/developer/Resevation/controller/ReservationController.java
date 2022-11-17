@@ -3,20 +3,22 @@ package com.developer.Resevation.controller;
 import com.developer.Resevation.Service.ReservationService;
 import com.developer.Resevation.Service.TotalBookingService;
 import com.developer.Resevation.entity.Reservation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/reservation")
+@RequestMapping("/api/reservation")
 public class ReservationController {
 
     private final ReservationService reservationService;
-    private TotalBookingService totalBookingService;
+    private final TotalBookingService totalBookingService;
 
-    public ReservationController(ReservationService reservationService) {
+    public ReservationController(ReservationService reservationService, TotalBookingService totalBookingService) {
         this.reservationService = reservationService;
+        this.totalBookingService = totalBookingService;
     }
 
     @GetMapping
@@ -31,12 +33,13 @@ public class ReservationController {
 
     @PostMapping
     public Reservation saveReservation(@RequestBody Reservation reservation) {
-
-       /* if (totalBookingService.findTotalBookingAmountReservationByPerformanceId(reservation.getPerformanceId()) >= 50
-        || totalBookingService.findTotalBookingAmountReservationByPerformanceId(reservation.getPerformanceId())
-                + reservation.getReservationAmount()> 50 ){
-         }*/
-        return reservationService.saveReservation(reservation);
+        // hvis total af booking samy nye reservation er lig eller stor end 50
+        if ( totalBookingService.findTotalBookingByPerformanceId(reservation.getPerformanceId())
+                        + reservation.getReservationAmount() > 50){
+            System.out.println("Du kan ikke reservere så mange antal");
+        }
+        else { return reservationService.saveReservation(reservation);}
+        return null;
     }
 
     @PutMapping
