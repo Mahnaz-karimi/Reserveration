@@ -1,6 +1,7 @@
 package com.developer.Resevation.controller;
 
 import com.developer.Resevation.Service.TotalBookingService;
+import com.developer.Resevation.entity.Reservation;
 import com.developer.Resevation.entity.TotalBooking;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +31,10 @@ public class TotalBookingController {
     @PostMapping
     public TotalBooking saveTotalBooking(@RequestBody TotalBooking totalBooking) {
         return totalBookingService.saveTotalBooking(totalBooking);
+    }
+    @PutMapping
+    public TotalBooking updateReservation(@RequestBody TotalBooking totalBooking) {
+        return totalBookingService.updateTotalBooking(totalBooking);
     }
     @DeleteMapping("/{id}")
     public void deleteTotalBooking(@PathVariable("id") Long id) {

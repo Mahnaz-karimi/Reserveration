@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface TotalBookingService {
     List<TotalBooking> findAllTotalBooking();
-    int findTotalBookingByPerformanceId(long id);
+    TotalBooking findTotalBookingByPerformanceId(long id);
     Optional<TotalBooking> findById(Long id);
     TotalBooking saveTotalBooking(TotalBooking totalBooking);
     TotalBooking updateTotalBooking(TotalBooking totalBooking);

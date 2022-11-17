@@ -3,6 +3,7 @@ package com.developer.Resevation.controller;
 import com.developer.Resevation.Service.ReservationService;
 import com.developer.Resevation.Service.TotalBookingService;
 import com.developer.Resevation.entity.Reservation;
+import com.developer.Resevation.entity.TotalBooking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,12 +34,18 @@ public class ReservationController {
 
     @PostMapping
     public Reservation saveReservation(@RequestBody Reservation reservation) {
-        // hvis total af booking samy nye reservation er lig eller stor end 50
-        if ( totalBookingService.findTotalBookingByPerformanceId(reservation.getPerformanceId())
-                        + reservation.getReservationAmount() > 50){
-            System.out.println("Du kan ikke reservere så mange antal");
+        TotalBooking tb = totalBookingService.findTotalBookingByPerformanceId(reservation.getPerformanceId());
+        int totalBookingAmountSamtNewReservation = tb.getTotalBooking() + reservation.getReservationAmount();
+        if ( totalBookingAmountSamtNewReservation > 50){
+            System.out.println("Du kan ikke reservere på dette antal pladser");
         }
-        else { return reservationService.saveReservation(reservation);}
+        else {
+            Reservation r = reservationService.saveReservation(reservation);
+            tb.setTotalBooking(totalBookingAmountSamtNewReservation);
+            totalBookingService.updateTotalBooking(tb);
+            return r;
+
+        }
         return null;
     }
 
