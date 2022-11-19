@@ -1,6 +1,6 @@
-package com.developer.Resevation.repository;
+package com.developer.reservation.repository;
 
-import com.developer.Resevation.entity.Performance;
+import com.developer.reservation.entity.Performance;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,12 +1,11 @@
-package com.developer.Resevation.controller;
+package com.developer.reservation.controller;
 
-import com.developer.Resevation.Service.ReservationService;
-import com.developer.Resevation.Service.TotalBookingService;
-import com.developer.Resevation.entity.Reservation;
-import com.developer.Resevation.repository.ReservationRepository;
+import com.developer.reservation.service.ReservationService;
+import com.developer.reservation.service.TotalBookingService;
+import com.developer.reservation.entity.Reservation;
+import com.developer.reservation.repository.ReservationRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.AfterEach;
+import com.fasterxml.jackson.databind.ObjectMapper;;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -14,10 +13,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -29,7 +25,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value=ReservationController.class)
@@ -79,7 +74,7 @@ class ReservationControllerTest {
         assertThat(outputInJson).isEqualTo(expectedJson);
     }
 
-/*
+
     @Test
     void findById() throws Exception {
         Mockito.when(reservationService.findById((long) Mockito.anyInt())).thenReturn(Optional.of(mockReservation1));
@@ -95,7 +90,7 @@ class ReservationControllerTest {
         String outputInJson = result.getResponse().getContentAsString();
         assertThat(outputInJson).isEqualTo(expectedJson);
     }
-
+/*
     @Test
     void saveReservation() {
 

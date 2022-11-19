@@ -1,7 +1,6 @@
-package com.developer.Resevation.Service;
+package com.developer.reservation.service;
 
-import com.developer.Resevation.entity.TotalBooking;
-import org.springframework.stereotype.Service;
+import com.developer.reservation.entity.TotalBooking;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,6 +1,6 @@
-package com.developer.Resevation.Service;
+package com.developer.reservation.service;
 
-import com.developer.Resevation.entity.Reservation;
+import com.developer.reservation.entity.Reservation;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.developer.Resevation.entity;
+package com.developer.reservation.entity;
 
 import javax.persistence.*;
 
@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    @Column(name = "reservation_id")
+    @Column(name = "id")
     private long id;
     @Column(name = "performance_id")
     private long performanceId;
@@ -18,8 +18,6 @@ public class Reservation {
 
     public Reservation() {
     }
-
-
     public long getId() {
         return id;
     }

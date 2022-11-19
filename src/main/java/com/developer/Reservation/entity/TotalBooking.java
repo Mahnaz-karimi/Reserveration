@@ -1,4 +1,4 @@
-package com.developer.Resevation.entity;
+package com.developer.reservation.entity;
 
 import javax.persistence.*;
 
@@ -11,7 +11,7 @@ public class TotalBooking {
     private long id;
     @Column(name = "performance_id")
     private long performanceId;
-    @Column(name = "total_resevation")
+    @Column(name = "total_reservation")
     private int totalBooking;
 
     public TotalBooking() {
@@ -41,7 +41,6 @@ public class TotalBooking {
     public int getTotalBooking() {
         return totalBooking;
     }
-
     public void setTotalBooking(int totalBooking) {
         this.totalBooking = totalBooking;
     }

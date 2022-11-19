@@ -1,8 +1,8 @@
-package com.developer.Resevation.Service.impl;
+package com.developer.reservation.service.impl;
 
-import com.developer.Resevation.Service.ReservationService;
-import com.developer.Resevation.entity.Reservation;
-import com.developer.Resevation.repository.ReservationRepository;
+import com.developer.reservation.service.ReservationService;
+import com.developer.reservation.entity.Reservation;
+import com.developer.reservation.repository.ReservationRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,8 +1,7 @@
-package com.developer.Resevation.controller;
+package com.developer.reservation.controller;
 
-import com.developer.Resevation.Service.TotalBookingService;
-import com.developer.Resevation.entity.Reservation;
-import com.developer.Resevation.entity.TotalBooking;
+import com.developer.reservation.service.TotalBookingService;
+import com.developer.reservation.entity.TotalBooking;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

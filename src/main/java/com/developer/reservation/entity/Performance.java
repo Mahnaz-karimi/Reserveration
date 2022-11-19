@@ -1,4 +1,4 @@
-package com.developer.Resevation.entity;
+package com.developer.reservation.entity;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Date;
 public class Performance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    @Column(name = "performance_id")
+    @Column(name = "id")
     private long id;
     @Column(name = "performance_title")
     private String title;
