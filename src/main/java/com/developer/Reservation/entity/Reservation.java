@@ -13,7 +13,7 @@ public class Reservation {
     private long performanceId;
     @Column(name = "costumer_id")
     private long costumerId;
-    @Column(name = "amount_reservation")
+    @Column(name = "amount_of_reservation")
     private int reservationAmount;
 
     public Reservation() {
