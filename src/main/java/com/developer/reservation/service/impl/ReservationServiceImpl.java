@@ -1,5 +1,6 @@
 package com.developer.reservation.service.impl;
 
+import com.developer.reservation.entity.TotalBooking;
 import com.developer.reservation.service.ReservationService;
 import com.developer.reservation.entity.Reservation;
 import com.developer.reservation.repository.ReservationRepository;

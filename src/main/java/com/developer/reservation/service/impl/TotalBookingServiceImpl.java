@@ -1,8 +1,10 @@
 package com.developer.reservation.service.impl;
 
+import com.developer.reservation.entity.Reservation;
 import com.developer.reservation.service.TotalBookingService;
 import com.developer.reservation.entity.TotalBooking;
 import com.developer.reservation.repository.TotalBookingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +12,6 @@ import java.util.Optional;
 @Service
 public class TotalBookingServiceImpl implements TotalBookingService {
     private TotalBookingRepository totalBookingRepository;
-
     public TotalBookingServiceImpl(TotalBookingRepository totalBookingRepository) {
         this.totalBookingRepository = totalBookingRepository;
     }

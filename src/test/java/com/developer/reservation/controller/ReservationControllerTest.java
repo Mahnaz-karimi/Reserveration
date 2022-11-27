@@ -1,5 +1,6 @@
 package com.developer.reservation.controller;
 
+import com.developer.reservation.entity.Performance;
 import com.developer.reservation.entity.TotalBooking;
 import com.developer.reservation.service.ReservationService;
 import com.developer.reservation.service.TotalBookingService;
@@ -17,7 +18,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.lang.Nullable;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -25,6 +25,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,16 +37,20 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @WebMvcTest(value=ReservationController.class)
 class ReservationControllerTest {
     private Reservation mockReservation1 = new Reservation();
-    private TotalBooking mockTotalBooking = new TotalBooking();
     private Reservation mockReservation2 = new Reservation();
+    private Performance mockPerformance1 = new Performance();
+    private TotalBooking mockTotalBooking1 = new TotalBooking();
+
     @Autowired
     private MockMvc mockMvc;
     @MockBean
     private ReservationService reservationService;
     @MockBean
     private TotalBookingService totalBookingService;
+
     @MockBean
     private ReservationRepository reservationRepository;
+
     @BeforeEach
     void setUp() {
 
@@ -59,12 +64,17 @@ class ReservationControllerTest {
         mockReservation2.setPerformanceId(1);
         mockReservation2.setId(2);
 
-        mockTotalBooking.setId(1);
-        mockTotalBooking.setTotalBooking(20);
-        mockTotalBooking.setPerformanceId(10);
+        mockPerformance1.setId(1L);
+        mockPerformance1.setTitle("title name");
+        mockPerformance1.setDateOfPerformance(LocalDate.now());
+
+        mockTotalBooking1.setId(1);
+        mockTotalBooking1.setTotalBooking(20);
+        mockTotalBooking1.setId(1);
+
+
 
     }
-
     @Test
     @DisplayName("Test find all reservation")
     void findAllReservation() throws Exception {
@@ -86,8 +96,6 @@ class ReservationControllerTest {
         String outputInJson = result.getResponse().getContentAsString();
         assertThat(outputInJson).isEqualTo(expectedJson);
     }
-
-
     @Test
     @DisplayName("Test find reservation by id")
     void findById() throws Exception {
@@ -109,7 +117,7 @@ class ReservationControllerTest {
         String inputInJson = this.mapToJson(mockReservation1);
 
         String URI = "/api/reservation";
-        Mockito.when(totalBookingService.findTotalBookingByPerformanceId(Mockito.anyLong())).thenReturn((mockTotalBooking));
+        Mockito.when(totalBookingService.findTotalBookingByPerformanceId(Mockito.anyLong())).thenReturn((mockTotalBooking1));
         Mockito.when(reservationService.saveReservation(Mockito.any(Reservation.class))).thenReturn(mockReservation1);
 
         RequestBuilder requestBuilder = MockMvcRequestBuilders
@@ -130,9 +138,6 @@ class ReservationControllerTest {
     void updateReservation() {
     }
 
-    @Test
-    void deleteReservation() {
-    }
     /**
      * Maps an Object into a JSON String. Uses a Jackson ObjectMapper.
      */
