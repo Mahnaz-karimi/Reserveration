@@ -1,6 +1,5 @@
 # Reserveration
 
-
 A project with intelliJ SpringBoot, Java JDK 18 , Gradle 7.5.1, Postgres, docker, junittest
 
 A TotalBooking should be register first because of if statement ind i saveReservation
@@ -8,14 +7,19 @@ A TotalBooking should be register first because of if statement ind i saveReserv
 ## To connect the project to Database
 File/ Setting/ Plugins -> add DB Navigator
 
+## Create performance 
 
-## Create TotalBooking object
+ curl -d '{"title" : "performance1"}' -H 'Content-Type: application/json' http://127.0.0.1:8080/api/performance
+
+A TotalBooking should be registed first because of if statement ind i saveReservation
+
+## Create TotalBooking 
 
 In Gitbash:
 
 curl -d '{"performanceId":1,"totalBooking":0}' -H 'Content-Type: application/json' http://127.0.0.1:8080/api/sumBooking
 
-## Create Reservation object
+## Create Reservation 
 
 In Git-bash:
 
