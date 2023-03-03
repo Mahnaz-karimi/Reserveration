@@ -23,8 +23,8 @@ public class TotalBooking  {
     public TotalBooking() {
     }
 
-    public TotalBooking(int totalBooking, Performance performance) {
-        this.totalBooking = 0;
+    public TotalBooking( Performance performance, int amountBooking) {
+        this.totalBooking = amountBooking;
         this.performance = performance;
     }
 }

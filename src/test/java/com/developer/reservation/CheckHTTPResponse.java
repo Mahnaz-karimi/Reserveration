@@ -1,11 +1,13 @@
 package com.developer.reservation;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
-import static junit.framework.TestCase.assertEquals;
+import org.springframework.boot.web.server.LocalServerPort;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CheckHTTPResponse {
     @LocalServerPort
@@ -17,8 +19,7 @@ public class CheckHTTPResponse {
     @Test
     public void shouldPassIfStringMatches(){
         assertEquals("Hello World from Spring Boot",
-                testRestTemplate.getForObject("http://localhost:" + port + "/", String.class )
-        );
+                testRestTemplate.getForObject("http://localhost:" + port + "/", String.class ));
     }
 
 }

@@ -1,8 +1,6 @@
 package com.developer.reservation.service;
 
 import com.developer.reservation.entity.TotalBooking;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.List;
 import java.util.Optional;
 

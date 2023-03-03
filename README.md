@@ -8,14 +8,13 @@ A TotalBooking should be register first because of if statement ind i saveReserv
 File/ Setting/ Plugins -> add DB Navigator
 
 ## Create performance 
+curl -d '{"title" : "performance1", "totalbooking" : 1}' -H 'Content-Type: application/json' http://127.0.0.1:8080/api/performance
 
- curl -d '{"title" : "performance1"}' -H 'Content-Type: application/json' http://127.0.0.1:8080/api/performance
-
-A TotalBooking should be registed first because of if statement ind i saveReservation
+A TotalBooking should be register first because of if statement ind i saveReservation
 
 ## Create TotalBooking 
 
-In Gitbash:
+In GitBash:
 
 curl -d '{"performanceId":1,"totalBooking":0}' -H 'Content-Type: application/json' http://127.0.0.1:8080/api/sumBooking
 
@@ -45,9 +44,7 @@ File/Project Structure SDK's
 ![image](https://user-images.githubusercontent.com/72239384/222249108-58e2c0a7-d278-470d-b3c9-d61fd47a1044.png)
 
 ## Add a Gradle dependency
-Open the build.gradle file in the editor.
-Press Alt+Insert to open the Generate context menu.
-From the context menu, select Add dependency.
+Inside of build.gradle file in the editor -> Alt+Insert -> Add dependency.
 
 ## To fix Error "TestEngine"
-File > Invalidate Cache > Invalidate and Restart
+File -> Invalidate Cache -> Invalidate and Restart

@@ -1,14 +1,10 @@
 package com.developer.reservation.entity;
 
-import lombok.*;
-
+import lombok.Data;
 import javax.persistence.*;
 import javax.transaction.Transactional;
-import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Date;
-import java.util.Locale;
+import java.time.ZoneId;
 
 
 @Entity
@@ -30,7 +26,7 @@ public class Performance  {
     private TotalBooking totalBooking;
     public Performance(String title) {
         this.title = title;
-        this.dateOfPerformance= LocalDate.now();
+        this.dateOfPerformance= LocalDate.now(ZoneId.of("GMT+02:30"));
     }
 
     public Performance() {

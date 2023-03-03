@@ -1,9 +1,7 @@
 package com.developer.reservation.controller;
 
 import com.developer.reservation.entity.Performance;
-import com.developer.reservation.entity.TotalBooking;
 import com.developer.reservation.service.PerformanceService;
-import com.developer.reservation.service.TotalBookingService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

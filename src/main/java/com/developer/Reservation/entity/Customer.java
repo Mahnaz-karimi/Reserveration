@@ -1,7 +1,6 @@
 package com.developer.reservation.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "Customer")
