@@ -5,7 +5,7 @@ A project with intelliJ SpringBoot, Java JDK 18 , Gradle 7.5.1, Postgres, docker
 ## To connect the project to Database
 File/ Setting/ Plugins -> add DB Navigator -> Restart intelliJ
 
-DB Navigator -> Setting -> add conections
+DB Navigator -> Setting -> add a new conection
 
 ## Create performance 
 curl -d '{"title" : "performance1", "totalbooking" : 1}' -H 'Content-Type: application/json' http://127.0.0.1:8080/api/performance
