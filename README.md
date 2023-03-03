@@ -4,6 +4,7 @@ A project with intelliJ SpringBoot, Java JDK 18 , Gradle 7.5.1, Postgres, docker
 
 ## To connect the project to Database
 File/ Setting/ Plugins -> add DB Navigator -> Restart intelliJ
+
 DB Navigator -> Setting -> add conections
 
 ## Create performance 
