@@ -3,7 +3,8 @@
 A project with intelliJ SpringBoot, Java JDK 18 , Gradle 7.5.1, Postgres, docker, junittest
 
 ## To connect the project to Database
-File/ Setting/ Plugins -> add DB Navigator
+File/ Setting/ Plugins -> add DB Navigator -> Restart intelliJ
+DB Navigator -> Setting -> add conections
 
 ## Create performance 
 curl -d '{"title" : "performance1", "totalbooking" : 1}' -H 'Content-Type: application/json' http://127.0.0.1:8080/api/performance
@@ -18,9 +19,8 @@ curl -d '{"performanceId":1,"totalBooking":0}' -H 'Content-Type: application/jso
 
 ## Create Reservation 
 
-In Git-bash:
-
 curl -d '{"performanceId":1,"costumerId":15,"reservationAmount":3}' -H 'Content-Type: application/json' http://127.0.0.1:8080/api/reservation
+
 ## Configuration of Gradle
 
 ![image](https://user-images.githubusercontent.com/72239384/222308815-597bb045-3e70-450c-8bc4-ba86a48228e8.png)
