@@ -2,8 +2,6 @@
 
 A project with intelliJ SpringBoot, Java JDK 18 , Gradle 7.5.1, Postgres, docker, junittest
 
-A TotalBooking should be register first because of if statement ind i saveReservation
-
 ## To connect the project to Database
 File/ Setting/ Plugins -> add DB Navigator
 
